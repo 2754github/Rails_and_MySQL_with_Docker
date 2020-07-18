@@ -1,5 +1,5 @@
 # ベースイメージはなるべく新しいものを
-FROM ruby:2.4.1
+FROM ruby:2.6
 
 # コンテナのlocaleの設定
 ENV LANG C.UTF-8
@@ -23,8 +23,8 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
   apt-get update -qq && \
   apt-get install -y nodejs yarn
 
-# mysql-clientをインストール
-RUN apt-get install -qq mysql-client
+# mysql-clientをインストール（mysql-clientはmariadb-clientに統合された）
+RUN apt-get install -qq mariadb-client
 
 
 ENV APP_HOME /app
@@ -33,6 +33,7 @@ WORKDIR $APP_HOME
 
 COPY Gemfile $APP_HOME/Gemfile
 COPY Gemfile.lock $APP_HOME/Gemfile.lock
+RUN gem install bundler
 RUN bundle install
 COPY . $APP_HOME
 
