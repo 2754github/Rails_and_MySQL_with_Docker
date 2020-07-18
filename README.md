@@ -1,18 +1,18 @@
 # DockerでRails+MySQLの環境構築
 
 ### このリポジトリをクローンし、ディレクトリ移動
-```
+```bash
 $ git clone https://github.com/2754github/Rails_and_MySQL_with_Docker.git
 $ cd Rails_and_MySQL_with_Docker
 ```
 
 ### 「rails new」の後、ビルド
-```
+```bash
 $ docker-compose run app rails new . --force --no-deps --database=mysql --skip-test --webpacker
 ```
 ※かなり時間かかる
 
-```
+```bash
 $ docker-compose build
 ```
 ※かなり時間かかる
@@ -20,7 +20,7 @@ $ docker-compose build
 ### config/database.yml編集
 `rails new`で作成された`config/database.yml`を編集
 
-```
+```yaml
 default: &default
   adapter: mysql2
   encoding: utf8mb4
@@ -45,7 +45,7 @@ production:
 ```
 
 ### DB作成とコンテナ起動
-```
+```bash
 $ docker-compose run app rake db:create
 $ docker-compose up
 ```
@@ -54,14 +54,14 @@ $ docker-compose up
 http://localhost:3000/ にアクセス
 
 ### エラー対処
-```
+```bash
 ERROR: for db  Cannot start service db: Ports are not available: listen tcp 0.0.0.0:3306: bind: address already in use
 ```
 ※訳）ポートが既に使用されています。
 
 解決方法
 
-```
+```bash
 $ sudo lsof -i -P | grep "LISTEN"　# 使用中のポートを確認
 $ kill -9 <プロセスID> # 該当するものを削除
 ```
