@@ -8,7 +8,7 @@ $ cd Rails_and_MySQL_with_Docker
 
 ### 「rails new」の後、ビルド
 ```bash
-$ docker-compose run app rails new . --force --no-deps --database=mysql --skip-test --webpacker
+$ docker-compose run app rails new . --api --force --no-deps --database=mysql --skip-test --webpacker
 ```
 ※かなり時間かかる
 
