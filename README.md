@@ -46,7 +46,7 @@ production:
 
 ### DB作成とコンテナ起動
 ```bash
-$ docker-compose run app rake db:create
+$ docker-compose run app rails db:create
 $ docker-compose up
 ```
 
