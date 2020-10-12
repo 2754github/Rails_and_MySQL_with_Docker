@@ -1,8 +1,8 @@
 # DockerでRails+MySQLの環境構築
 
-### このリポジトリをクローンし、ディレクトリ移動
+### このリポジトリをDLし、ディレクトリ移動
 ```bash
-$ git clone https://github.com/2754github/Rails_and_MySQL_with_Docker.git
+$ このリポジトリをダウンロードして解凍
 $ cd Rails_and_MySQL_with_Docker
 ```
 
